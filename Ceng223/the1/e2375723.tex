@@ -1,0 +1,497 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{float}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[dvips]{graphicx}
+%\usepackage{a4wide}
+\usepackage{epsfig}
+\usepackage{fancybox}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{alltt}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm}
+\usepackage{bm}
+\usepackage{wasysym}
+
+%\usepackage{fullpage}
+%\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[hmargin=2cm,vmargin=3.0cm]{geometry}
+%\topmargin=0cm
+%\topmargin=-1.8cm
+%\addtolength{\textheight}{6.5cm}
+%\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-3cm}
+%\setlength{\oddsidemargin}{0.0cm}
+%\setlength{\evensidemargin}{0.0cm}
+
+%misc libraries goes here
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usetikzlibrary{automata,positioning}
+
+\usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black]{hyperref}
+
+
+\lstdefinestyle{customtex}{
+    %backgroundcolor=\color{lbcolor},
+    tabsize=2,
+    language=TeX,
+    numbers=none,
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize,
+    aboveskip={0.0\baselineskip},
+    belowskip={0.0\baselineskip},
+    %
+    columns=flexible,
+    keepspaces=true,
+    fontadjust=true,
+    upquote=true,
+    %
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    %
+    %identifierstyle=\color[rgb]{0,0.2,0.8},
+    identifierstyle=\color[rgb]{0,0,0.5},
+    %identifierstyle=\color[rgb]{0.133,0.545,0.133},
+    %keywordstyle=\color[rgb]{0.8,0,0},
+    %keywordstyle=\color[rgb]{0.133,0.545,0.133},
+    keywordstyle=\color[rgb]{0,0,0.5},
+    %commentstyle=\color[rgb]{0.133,0.545,0.133},
+    commentstyle=\color[rgb]{0.545,0.545,0.545},
+    %stringstyle=\color[rgb]{0.827,0.627,0.133},
+    stringstyle=\color[rgb]{0.133,0.545,0.133},
+    %
+    literate={â}{{\^{a}}}1 {Â}{{\^{A}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1 {ı}{{\i}}1 {İ}{{\.{I}}}1   {ö}{{\"o}}1 {Ö}{{\"O}}1 {ş}{{\c{s}}}1 {Ş}{{\c{S}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1 {~}{$\sim$}{1}
+}
+
+\lstdefinestyle{output}{
+    %backgroundcolor=\color{lbcolor},
+    tabsize=2,
+    numbers=none,
+    basicstyle=\footnotesize\ttfamily,
+    numberstyle=\footnotesize,
+    aboveskip={0.0\baselineskip},
+    belowskip={0.0\baselineskip},
+    %
+    columns=flexible,
+    keepspaces=true,
+    fontadjust=true,
+    upquote=true,
+    %
+    breaklines=true,
+    prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    %
+    %identifierstyle=\color[rgb]{0.44,0.12,0.1},
+    identifierstyle=\color[rgb]{0,0,0},
+    keywordstyle=\color[rgb]{0,0,0},
+    commentstyle=\color[rgb]{0,0,0},
+    stringstyle=\color[rgb]{0,0,0},
+    %
+    literate={â}{{\^{a}}}1 {Â}{{\^{A}}}1 {ç}{{\c{c}}}1 {Ç}{{\c{C}}}1 {ğ}{{\u{g}}}1 {Ğ}{{\u{G}}}1 {ı}{{\i}}1 {İ}{{\.{I}}}1   {ö}{{\"o}}1 {Ö}{{\"O}}1 {ş}{{\c{s}}}1 {Ş}{{\c{S}}}1 {ü}{{\"u}}1 {Ü}{{\"U}}1
+}
+
+\lstset{style=customtex}
+
+
+\tikzset{%
+    terminal/.style={draw, rectangle,
+    				 align=center, 
+					 minimum height=1cm, 
+					 minimum width=2cm,
+					 fill=black!10,
+					 anchor=mid},
+    nonterminal/.style={draw, rectangle,
+    					align=left,
+					    minimum height=1cm, 
+						minimum width=2cm, 
+						anchor=mid},% and so on
+}
+
+%% Style for terminals
+%\tikzstyle{terminal}=[draw, rectangle, 
+%					  minimum height=1cm, 
+%					  minimum width=2cm, 
+%					  fill=black!20,
+%					  anchor=south west]
+%% Style for nonterminals
+%\tikzstyle{nonterminal}=[draw, rectangle, 
+%						 minimum height=1 cm, 
+%						 minimum width=2 cm, 
+%						 anchor=north east]
+
+
+\newcommand{\HRule}{\rule{\linewidth}{1mm}}
+\newcommand{\kutu}[2]{\framebox[#1mm]{\rule[-2mm]{0mm}{#2mm}}}
+\newcommand{\gap}{ \\[1mm] }
+
+\newcommand{\Q}{\raisebox{1.7pt}{$\scriptstyle\bigcirc$}}
+\newcommand{\minus}{\scalebox{0.35}[1.0]{$-$}}
+
+\setlength{\fboxsep}{10pt}
+
+\tcbsetforeverylayer{enhanced jigsaw, breakable, arc=0mm, boxrule=1pt, boxsep=5pt, after=\vspace{1em}, colback=white, colframe=black}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\setlength\parindent{0pt}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
+%\renewcommand\arraystretch{1.2}
+
+\newenvironment{Tab}[1]
+  {\def\arraystretch{1}\tabular{#1}}
+  {\endtabular}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Discrete Computational Structures \\ Take Home Exam 1}
+\author{Name SURNAME \\ 1234567} % write your name and id
+\date{} % do not write any date
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\HRule\\
+Middle East Technical University \hfill Department of Computer Engineering
+{\let\newpage\relax\maketitle}
+\HRule\\
+\vspace{1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Write your answers below the section tags
+\section*{Question 1 \hfill \normalfont{(7 pts)}}
+
+\tab \textbf{a)} Construct a truth table for the following compound proposition.
+\begin{equation*}
+    (q \rightarrow \neg p)\leftrightarrow (p \leftrightarrow \neg q)
+\end{equation*} 
+\hfill \small{(3.5/7 pts)} \\
+\begin{tcolorbox}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            p & q & $\neg$ p & $\neg$ q & q $\rightarrow$ $\neg$ p & p $\leftrightarrow$ $\neg$ q & (q $\rightarrow$ $\neg$ p)$\leftrightarrow$ (p $\leftrightarrow$ $\neg$ q)\\
+            \hline
+            T & T & F & F & F & F & T \\
+            T & F & F & T & T & T & T \\
+            F & T & T & F & T & T & T \\
+            F & F & T & T & T & F & F \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{tcolorbox}
+\newpage
+\tab \textbf{b)} Show that whether the following conditional statement is a tautology by using a truth table.
+\begin{equation*}
+    [(p \vee q) \wedge (r \rightarrow p) \wedge (r \rightarrow q)] \rightarrow r
+\end{equation*}
+\hfill \small{(3.5/7 pts)}\\
+\begin{tcolorbox}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+            \hline
+            p & q & r & p $\vee$ q & r $\rightarrow$ p & r $\rightarrow$ q & [(p $\vee$ q) $\wedge$ (r $\rightarrow$ p) $\wedge$ (r $\rightarrow$ q)] $\rightarrow$ r \\
+            \hline
+            T & T & T & T & T & T & T \\
+            T & T & F & T & T & T & F \\
+            T & F & T & T & T & F & T \\
+            T & F & F & T & T & T & F \\
+            F & T & T & T & F & T & T \\
+            F & T & F & T & T & T & F \\
+            F & F & T & F & F & F & T \\
+            F & F & F & F & T & T & T \\
+            \hline
+        \end{tabular}
+    \end{center}
+\end{tcolorbox}
+
+
+\section*{Question 2 \hfill \normalfont{(8 pts)}}
+\tab Show that $(p \rightarrow q) \wedge (p \rightarrow r)$ and $(\neg q \vee \neg r)\rightarrow \neg p$ are logically equivalent. Use tables 6,7 and 8 given under the section "$\textit{Propositional Equivalences}$" in the course textbook and give the reference to the table and the law in each step.
+
+\begin{tcolorbox}
+\text{}
+$(p \rightarrow q) \wedge (p \rightarrow r)$ $\equiv$ $p \rightarrow (q \wedge r)$ \tab\tab (\text{table 7 , and rule $(p \rightarrow q) \wedge (p \rightarrow r)$ $\equiv$ $p \rightarrow (q \wedge r)$ )}
+\newline
+\tab\tab\tab $\equiv$ $\neg$ $(q \wedge r) \rightarrow \neg p$ \tab (\text{table 7 , and rule $p \rightarrow q$ $\equiv$ $\neg q \rightarrow \neg q$})
+\newline
+\tab\tab\tab $\equiv$  $(\neg q \vee \neg r) \rightarrow \neg p$ \tab (\text{table 6 , and De Morgan’s laws})
+    
+    
+
+\end{tcolorbox}
+
+\section*{Question 3 \hfill \normalfont{(30 pts, 2.5 pts each)}}
+\tab Let F(x, y) mean that x is the father of y; M(x, y) denotes x is the mother of y. Similarly,
+H(x, y), S(x, y), and B(x, y) say that x is the husband/sister/brother of y, respectively. You
+may also use constants to denote individuals, like Sam and Alex. You can use $\vee, \wedge, \rightarrow, \neg, \forall, \exists$ rules and quantifiers. However, you are not allowed
+to use any predicate symbols other than the above to translate the following sentences into
+predicate logic. $\exists$! and exclusive-or (XOR) quantifiers are forbidden:
+\begin{multicols}{2}
+\begin{enumerate}[label=\textbf{\arabic*})]
+\item Everybody has a mother.
+\item Everybody has a father and a mother.
+\item Whoever has a mother has a father.
+\item Sam is a grandfather.
+\item All fathers are parents.
+\item All husbands are spouses.
+\item No uncle is an aunt.
+\item All brothers are siblings.
+\item Nobody's grandmother is anybody's father.
+\item Alex is Ali's brother-in-law.
+\item Alex has at least two children.
+\item Everybody has at most one mother.
+\end{enumerate}
+\end{multicols}
+\newpage
+\begin{tcolorbox}
+
+\begin{enumerate}
+    \item $\forall y \exists x$ M(x,y) 
+    \item $\forall y \exists x$ (F(x,y) $\wedge$ M(x,y))
+    \item $\forall y$ [[$\exists x$ M(x,y)] $\rightarrow [ \exists x$  F(x,y)]]
+    \item $\exists x \exists$y (F(Sam,x) $\wedge$ F(x,y))
+    \item $\forall x \exists y$ F(x,y) $\rightarrow$ [F(x,y) $\vee$ M(x,y)] 
+    \item $\forall x \exists y \exists z$ H(x,y) $\rightarrow$ [H(x,y) $\vee$ H(z,x)]
+    \item $\forall x \forall y \exists k$  [B(x,y) $\wedge (F(y,k) \vee M(y,k))]$ $\rightarrow \neg [S(x,y) \wedge (F(y,k) \vee M(y,k))]$
+    \item $\forall x \forall y \exists z \exists k$ B(x,y) $\rightarrow [(M(z,x) \wedge M(z,y)) \vee (F(k,x) \wedge F(k,y))] $
+    \item $\forall x \forall y \forall z \forall k$ (M(x,y) $\wedge$ F(y,z)) $\rightarrow \neg F(x,k)$
+    \item $\forall x \forall y$ [H(Alex,x) $\wedge$ B(Ali,x)]
+    \item $\exists x \exists y$ F(Alex,x) $\wedge$ F(Alex,y)
+    \item $\forall x \forall y \forall z$ [M(y,x) $\wedge$ M(z,x)] $\rightarrow$ y = z
+\end{enumerate}
+\end{tcolorbox}
+\newpage
+\section*{Question 4 \hfill \normalfont{(25 pts)}}
+\tab Prove the following claim by natural deduction. Use only the natural deduction rules $\vee$, $\wedge$, $\rightarrow$, $\neg$ introduction and elimination. If you attempt to make use of a lemma or equivalence, you need to prove it by natural deduction too.
+\begin{equation*}
+    \textbf{a)} \; p \rightarrow q, r \rightarrow s \vdash (p \vee r) \rightarrow (q \vee s)
+\end{equation*}
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+\begin{enumerate}
+    \item p $\rightarrow$ q \tab (premise)
+    \item r $\rightarrow$ s \tab (premise)
+    \begin{tcolorbox}
+        \item p $\vee$ r \tab (assumption)
+        \begin{tcolorbox}
+            \item p \tab (assumption)
+            \item q \tab (1,4 and $\rightarrow$ elimination)
+            \item q $\vee$ s \tab (5 and $\vee$ introduction)
+        \end{tcolorbox}
+        \begin{tcolorbox}
+            \item r \tab (assumption)
+            \item s \tab (2,7 and $\rightarrow$ elimination)
+            \item q $\vee$ s \tab (8 and $\vee$ introduction)
+        \end{tcolorbox}
+        \item q $\vee$ s \tab (3,4-6, 7-9 and $\vee$ elimination)
+    \end{tcolorbox}
+    \item (p $\vee$ r) $\rightarrow$ (q $\vee$ s) \tab (3-10, $\rightarrow$ introduction)
+\end{enumerate}
+\end{tcolorbox}
+\newpage
+\begin{equation*}
+     \textbf{b)} \;  (p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \wedge q) \rightarrow \neg r)
+\end{equation*}
+
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+\begin{enumerate}
+    \item $(p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \wedge q) \rightarrow \neg r)$
+    \item $( \neg (r \rightarrow \neg q) \rightarrow \neg p ) \rightarrow ((p \wedge q) \rightarrow \neg r)$ \tab (contrapositive)
+    \item $( \neg (\neg r \vee \neg q) \rightarrow \neg p ) \rightarrow ((p \wedge q) \rightarrow \neg r)$ \tab (equivalence(*) $p \rightarrow q \equiv \neg p \vee q)$
+    \item $((r \wedge q) \rightarrow \neg p ) \rightarrow ((p \wedge q) \rightarrow \neg r)$\tab\tab(De Morgan's Law)
+    \begin{tcolorbox}
+        \item $(r \wedge q) \rightarrow \neg p )$ \tab (assumption)
+        \begin{tcolorbox}
+            \item $(p \wedge q)$ \tab (assumption)
+            \begin{tcolorbox}
+                \item r \tab (assumption)
+                \item q \tab (6 and $\wedge$ elimination)
+                \item r $\wedge$ q \tab (7,8 and $\wedge$ introduction)
+                \item $\neg$ p \tab (5,9 and $\rightarrow$ elimination)
+                \item p \tab (6 and $\wedge$ elimination)
+            \end{tcolorbox}
+            \item $\neg$ r \tab (7-11 and falsity elimination (PbC))
+        \end{tcolorbox}
+        \item (p $\wedge$ q) $\rightarrow \neg$ r \tab (6-12 and $\rightarrow$ introduction)
+    \end{tcolorbox}
+    \item $((r \wedge q) \rightarrow \neg p ) \rightarrow ((p \wedge q) \rightarrow \neg r)$ \tab (5-13 and $\rightarrow$ introduction)
+    \item $(p \rightarrow (r \rightarrow \neg q)) \rightarrow ((p \wedge q) \rightarrow \neg r)$ \tab (1,2,3,4,14)
+\end{enumerate}
+
+\begin{center}
+--------------------------------------------------------------------------------------------\newline
+------- equivalence(*) -------
+\end{center}
+\begin{enumerate}
+    \item $p \rightarrow q$ \tab (premise)
+    \begin{tcolorbox}
+        \item p \tab (assumption)
+        \item q \tab (1,2 and $\rightarrow$ elimination)
+        \item $\neg$p $\vee$ q \tab (3 and $\vee$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item $\neg$p \tab (assumption)
+        \item $\neg$ p $\vee$ q \tab (5 and $\vee$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item q \tab (assumption)
+        \item $\neg$ p $\vee$ q \tab (7 and $\vee$ introduction)
+    \end{tcolorbox}
+    \item $\neg$ p $\vee$ q \tab (1,2-4,5-6,7-8,$\rightarrow$ elimination)
+\end{enumerate}
+
+
+\end{tcolorbox}
+
+\section*{Question 5 \hfill \normalfont{(30 pts)}}
+\tab Prove the following claim by natural deduction. Use only the natural deduction rules $\vee$, $\wedge$, $\rightarrow$, $\neg$ introduction and elimination. If you attempt to make use of a lemma or equivalence, you need to prove it by natural deduction too.
+
+
+\begin{equation*}
+    \textbf{a)} \; \forall x P(x) \vee \forall x Q(x) \vdash \forall x (P(x) \vee Q(x)) 
+\end{equation*}
+
+\hfill \small{(12.5/25 pts)}\\
+\begin{tcolorbox}
+
+\begin{enumerate}
+    \item $\forall x$ P(x) $\vee$ $\forall x$ Q(x) \tab (premise)
+    \begin{tcolorbox}
+        \item $\forall x$ P(x) \tab (assumption)
+        \begin{tcolorbox}
+            a is fresh name
+            \item P(a) \tab (2 and $\forall$ elimination)
+            \item P(a) $\vee$ Q(a) \tab (3 and $\vee$ introduction)
+        \end{tcolorbox}
+        \item $\forall x$ (P(x) $\vee$ Q(x)) \tab   (3-4 and $\forall$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item $\forall x$ Q(x) \tab (assumption)
+        \begin{tcolorbox}
+            b is fresh name
+            \item Q(b) \tab (6 and $\forall$ elimination)
+            \item P(b) $\vee$ Q(b) \tab (7 and $\vee$ introduction)
+        \end{tcolorbox}
+        \item $\forall x$ (P(x) $\vee$ Q(x)) \tab   (7-8 and $\forall$ introduction)
+    \end{tcolorbox}
+    \item $\forall x$ (P(x) $\vee$ Q(x)) \tab   (2-5,6-9 and $\vee$ elimination)
+\end{enumerate}
+
+\end{tcolorbox}
+\newpage
+\begin{equation*}
+    \textbf{b)} \; \forall x P(x) \rightarrow S \vdash \exists x (P(x)\rightarrow S)\\
+\end{equation*}
+
+\hfill \small{(17.5/25 pts)}\\
+\begin{tcolorbox}
+\begin{enumerate}
+    \item $\forall x$ P(x) $\rightarrow$ S  \tab (premise)
+    \item $\neg$($\forall x$ P(x)) $\vee$ S  \tab (1 and equivalence(*) $A \rightarrow B$ $\equiv$ $\neg A \vee B$)
+    \item ($\exists x$ $\neg$P(x)) $\vee$ S  \tab (2 and equivalance(**) $ \neg \forall x A(x) \equiv \exists x \neg A(x)$)
+    \begin{tcolorbox}
+        \item $\exists x$ $\neg$P(x) \tab (assumption)
+        \begin{tcolorbox}
+            a is fresh name
+            \item $\neg$P(a) \tab (4 and $\exists$ elimination)
+            \item $\neg$P(a) $\vee$ S \tab (5 and $\vee$ introduction)
+            \item P(a) $\rightarrow$ S \tab (6 and equivalence(*) $A \rightarrow B$ $\equiv$ $\neg A \vee B$)
+        \end{tcolorbox}
+        \item $\exists x (P(x)\rightarrow S)$ \tab   (5-7 and $\exists$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item S \tab (assumption)
+        \begin{tcolorbox}
+            b is fresh name
+            \item $\neg$P(b) $\vee$ S \tab (9 and $\vee$ introduction)
+            \item P(b) $\rightarrow$ S \tab (10 and equivalence(*) $A \rightarrow B$ $\equiv$ $\neg A \vee B$)
+        \end{tcolorbox}
+        \item $\exists x (P(x)\rightarrow S)$ \tab   (10-11 and $\exists$ introduction)
+    \end{tcolorbox}
+    \item $\exists x (P(x)\rightarrow S)$ \tab   (3,4-8,9-12 and $\vee$ elimination)
+\end{enumerate}
+\begin{center}
+--------------------------------------------------------------------------------------------\newline
+------- equivalence(*) -------
+\end{center}
+\begin{enumerate}
+    \item $p \rightarrow q$ \tab (premise)
+    \begin{tcolorbox}
+        \item p \tab (assumption)
+        \item q \tab (1,2 and $\rightarrow$ elimination)
+        \item $\neg$p $\vee$ q \tab (3 and $\vee$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item $\neg$p \tab (assumption)
+        \item $\neg$ p $\vee$ q \tab (5 and $\vee$ introduction)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        \item q \tab (assumption)
+        \item $\neg$ p $\vee$ q \tab (7 and $\vee$ introduction)
+    \end{tcolorbox}
+    \item $\neg$ p $\vee$ q \tab (1,2-4,5-6,7-8,$\rightarrow$ elimination)
+\end{enumerate}
+\begin{center}
+--------------------------------------------------------------------------------------------\newline
+------- equivalence(**)----[left to right] -------
+\end{center}
+
+\begin{enumerate}
+    \item $\neg \forall x P(x)$ \tab (premise)
+    \begin{tcolorbox}
+        a fresh name
+        \item P(a) \tab (assumption)
+        \item $\forall x$P(x) \tab (2 and $\forall$ introduction)
+        \item F \tab (1,3)
+    \end{tcolorbox}
+    \begin{tcolorbox}
+        b fresh name
+        \item $\neg$P(b) \tab (2-4 and $\neg$ introduction)
+    \end{tcolorbox}
+    \item $\exists x \neg$P(x) \tab (5 and $\exists$ introduction)
+\end{enumerate}
+\begin{center}
+------- equivalence(**)----[right to left] -------
+\end{center}
+\begin{enumerate}
+    \item $\exists x \neg$P(x) \tab (premise)
+    \begin{tcolorbox}
+        \item $\forall x$P(x) \tab (assumption)
+        \begin{tcolorbox}
+        a fresh name
+            \item $\neg$P(a) \tab (1 and $\exists$ elimination)
+            \item P(a) \tab (2 and $\forall$ elimination)
+            \item F \tab (3,4)
+        \end{tcolorbox}
+        \item F \tab (2, 3-5)
+    \end{tcolorbox}
+    \item $\neg \forall x P(x)$ \tab (1,2-6, $\neg$ introduction)
+\end{enumerate}
+
+\end{tcolorbox}
+
+\end{document}

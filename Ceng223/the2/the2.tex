@@ -1,0 +1,211 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name : YAHYA SUNGUR \\
+Id Number : 2375723 
+% Write your answers below the section tags
+\section*{Answer 1}
+\paragraph{a.}
+\subsection*{i)}
+$T_1$ is a topology. Since,
+\begin{itemize}
+    \item $\emptyset$ and A are in $T_1$
+    \item The union of elements of the any subset of $T_1$ is in $T_1$. For example, $\emptyset$ and A are subsets of $T_1$, and arbitrary unions of them are also in $T_1$
+    \item The intersection of elements of the any subset of $T_1$ is in $T_1$. For example, $\emptyset$ and A are subsets of $T_1$, and finite intersection of them are also in $T_1$
+\end{itemize}
+\subsection*{ii)}
+$T_2$ is not a topology. Since,
+\begin{itemize}
+    \item The union of elements of the any subset of $T_2$ is not in $T_2$. For example,\{a\},\{b\} and \{c\} are subsets of $T_2$, and union of them is  \{ a,b,c\} is not in $T_2$
+\end{itemize}
+\subsection*{iii)}
+$T_3$ is a topology. Since,
+\begin{itemize}
+    \item $\emptyset$ and A are in $T_1$
+    \item The union of elements of the any subset of $T_3$ is in $T_3$. For example, $\emptyset$,A, \{a,b\}, \{b\}, \{b,c\}, \{a,b,c\} are subsets of $T_3$, and arbitrary unions of them are also in $T_3$ 
+        \begin{itemize}
+        \item union of any set in $T_3$ with $\emptyset$ is the set itself. And it is in $T_3$
+        \item union of \{a,b\}, \{b\}, \{b,c\} is \{a,b,c\}. And it is in $T_3$
+        \item ...
+    \end{itemize}
+    \item The intersection of elements of the any subset of $T_3$ is in $T_3$. For example, $\emptyset$,A, \{a,b\}, \{b\}, \{b,c\}, \{a,b,c\} are subsets of $T_3$, and finite intersection of them are also in $T_3$
+    \begin{itemize}
+        \item intersection of any set with $\emptyset$ is $\emptyset$. And it is in $T_3$
+        \item intersection of \{a,b\}, \{b\}, \{b,c\} is \{b\}. And it is in $T_3$
+        \item ...
+    \end{itemize}
+\end{itemize}
+\subsection*{iv)}
+$T_4$ is not a topology. Since,
+\begin{itemize}
+    \item The union of elements of the any subset of $T_4$ is not in $T_4$. For example,\{a,c\} and \{b\} are subsets of $T_4$, and union of them is  \{ a,b,c\} is not in $T_4$
+\end{itemize}
+
+\paragraph{b.}
+\subsection*{i)}
+It is topology. Since;
+
+Let $\mathcal{T}$ be a topology defined at this question.
+\begin{itemize}
+    \item İf A - U is A, than U = $\emptyset$, also the empty set is considered finite, with cardinality zero. Thus A is in $\mathcal{T}$ because its complement is finite.
+    \item $U_k \cap U_j$ = A - ($U_k \cup U_j$) due to De Morgan's law. Since the union of two finite sets is also finite, this set is still in $\mathcal{T}$. And, this reasoning can be extended to any finite amount of intersections.\newline
+    ---OR---\newline
+    Let $U_1,. . .,U_n$ be open in the topology. We want to show the intersection is open, so if any of them is empty, the intersection will be too, so we can discard those cases: assume all $U_i$ are non-empty and open, so their complements are finite. Now De Morgan says, A - intersection of $U_i$ (for i=1,2,3,...,n) equals to union of (A - $U_i$) (for i=1,2,3,...,n). and so the right hand side is finite, as a finite union of finite sets, and so intersection of $U_i$ (for i=1,2,3,...,n) is open and in $\mathcal{T}$
+    \item Suppose $\{U_i\}$ are open. We want to see that union of $U_i$ is open, so we can discard al $U_i$ that happen to be empty, because they do not affect the union. Assume complement of $U_i$ are finite, and we can assume we have at least one. And De Morgan says, A - union of $U_i$ equals to intersection of (A - $U_i$) and we see that the right hand set is an intersection of at least one finite set (and the intersection only can become smaller with more sets) so the right hand side is surely finite. Hence it is in $\mathcal{T}$.
+\end{itemize}
+\subsection*{ii)}
+    Let T be the collection of all subsets U of A such that A - U is countable or all of A.
+\begin{itemize}
+    \item $A - \emptyset$ = A, and $A - A$ = $\emptyset$ which is countable. So, $\emptyset$ and A are in $T$
+    \item Suppose $\{U_i\}$ is a family of open sets in $T$. If $U_i = \emptyset$ $\forall i$, then union of $\{U_i\}$ is $\emptyset$, which is in $T$. If there is some nonempty set in $\{U_i\}$ then A - union of $U_i$ is equal to intersection of (A - $U_i$), which at most countably infinite because at least one of the sets in A-$U_i$ is countable. So, union of $U_i$ is in $T$.
+    \item Suppose we have $\{U_1,U_2,U_3,...,U_n\}$, a finite collection of open sets in $T$. If $U_i$ = $\emptyset$ for some i $\leq$ n then intersection of $U_i$ (for i = 1,2,3,..n) is equal to $\emptyset$ which is in $T$. If $U_i$ is not equal to $\emptyset$ for all i $\leq$ n, then A - intersection of $U_i$ (for i = 1,2,3,..n)  is equal to union of (A-$U_i$). And, this set is countable because it is the finite union of countable sets. Therefore, intersection of $U_i$ (for i = 1,2,3,...,n) is in $T$.
+\end{itemize}
+Hence, it is a topology.
+\subsection*{iii)}
+ NO. İt is not a topology. Counterexample;
+\begin{itemize}
+    \item Consider $\mathbb{R}$ with this topology. Both $(-\infty,2)$ and $(2,\infty)$ are open sets, as their complements are are infinite. However, $(-\infty,2) \cup (2,\infty) = \mathbb{R} - \{2\} $ is not an open set because its complement is finite. 
+\end{itemize}
+
+\section*{Answer 2}
+\paragraph{a.}
+Claim: f is injective. \newline
+Proof:
+\begin{itemize}
+    \item Fix any (x,y) and (u,v) $\in A \times (0,1) $ satisfying f(x,y) = f(u,v) \\
+    by definition of f, we have x + y = u + v \\
+    $\implies$ x - u = v - y \\
+    Since x,u $\in$ A and y,v $\in$ (0,1) ; for distinct x,u and y,v \\
+    x - u $\geq$ 1 $\vee$ x - u $\leq$ -1 since -1 $< v - y <$ 1 \\
+    So, the equality cannot be hold for distinct x,u and y,v. Equality holds only for the condition: \\
+    (x,y) = (u,v) $\implies$ f is injective.
+\end{itemize}
+\paragraph{b.}
+Claim: f is not surjective. \newline
+Proof:
+\begin{itemize}
+    \item Let b be an element from (0.1) and $a_i$'s are elements of the set A, which $a_1 = 0, a_2 = 1, a_3 = 2 ...$.\\
+    The function f from A $\times$ (0,1) to [0,$\infty$) ,and the pairs of $(x,y)_i$'s represent the function elements, which $(x,y)_i = (a_i,b)$ $ \forall b \in (0,1)$ \\
+    Then, f$(x,y)_1$ = f$(a_1,b)$ = $a_1$ + b = 0 + b = b $\forall b \in (0,1)$, and it corresponds to the interval (0,1) \\
+    f$(x,y)_2$ = f$(a_2,b)$ = $a_2$ + b = 1 + b $\forall b \in (0,1)$, and it corresponds to the interval (1,2) \\
+    f$(x,y)_3$ corresponds to the interval (2,3) \\
+    f$(x,y)_4$ corresponds to the interval (3,4) \\
+    .\\
+    .\\
+    .\\
+    Since union of corresponding intervals does not contain positive integers and zero (such as, 0,1,2,3,4...), f is not onto. Hence, it is not surjective.  
+\end{itemize}
+\paragraph{c.}
+\begin{itemize}
+    \item If there is am injection f :A$\rightarrow$B, we can easily say that cardinality of A is less than or equal to cardinality of B.(i.e. $|A| \leq |B|$ ) \\
+    From part (a), since there is an injection f: A$\times$(0,1) $\rightarrow$ [0,$\infty$) \\
+    $\implies$ $|A\times(0,1)| \leq |[0,\infty)|$ \\
+    And also, since there is an injection g: [0,$\infty$) $\rightarrow$ A$\times$(0,1) \\
+    $\implies$ $|[0,\infty)| \leq |A\times(0,1)|$ \\
+    by SCHRÖDER-BERNSTEIN THEOREM, \\
+    $|[0,\infty)| = |A\times(0,1)|$
+\end{itemize}
+
+\section*{Answer 3}
+\paragraph{a.}
+Countable. Since;
+\begin{itemize}
+    \item The functions f : \{0, 1\} $\rightarrow$ $Z^+$ are in one-to-one correspondence with $Z^+\times Z^+$ (map f to the pair ($a_1, a_2$) with $a_1 = f(1), a_2 = f(2)$). Since the $Z^+$ is countable, as a cartesian product of countable sets, the given set is countable too.
+\end{itemize}
+\paragraph{b.}
+Countable. Since;
+\begin{itemize}
+    \item The functions f : \{1,2,3,...,n\} $\rightarrow$ $Z^+$ are in one-to-one correspondence with $Z^+\times ... \times Z^+$ (n times). Since the latter set is countable and a cartesian product of countable sets is also countable, the given set is countable too.
+\end{itemize}
+\paragraph{c.}
+Uncountable. Since;
+\begin{itemize}
+    \item The set of all functions f : $Z^+$ $\rightarrow$ $Z^+$ contains the set of all functions $Z^+$ $\rightarrow$ \{0, 1\} (in part d), i.e., the set of all infinite binary sequences. Since the set of all functions $Z^+$ $\rightarrow$ \{0, 1\} (in part d) is uncountable, and since the set of all functions $Z^+$ $\rightarrow$ \{0, 1\} (in part d) $\subset$ the set of all functions f : $Z^+$ $\rightarrow$ $Z^+$, it follows that the set of all functions f : $Z^+$ $\rightarrow$ $Z^+$ is uncountable.
+
+\end{itemize}
+\paragraph{d.}
+Uncountable. Since;
+\begin{itemize}
+    \item  Mapping a function f : $Z^+$ $\rightarrow$ \{0, 1\} to the sequence (a1, a2, . . .) defined by $a_i$ = f(i) for each i yields a bijection between functions of the given type and infinite binary sequences. Since the latter set is uncountable, so is the given set of all functions f : $Z^+$ $\rightarrow$ \{0, 1\} is also uncountable.
+
+\end{itemize}
+\paragraph{e.}
+Countable. Since;
+\begin{itemize}
+    \item For each n $\in Z^+$, let $F_n = \{f : Z^+ \rightarrow \{0, 1\} | f(i) = 0$ $ \forall i > n\}.$ Then $F_n$ is a finite set, since any $f \in F_n$ is determine by the n values f(1), . . . , f(n). (In particular, $F_n$ has $2^n$ elements.) Moreover, every element of F is in $F_n$ for some n, by definition. Thus, F is a countable union of finite sets, hence it is also countable.
+\end{itemize}
+
+\section*{Answer 4}
+\paragraph{a.}
+n! is not $\Theta(n^n)$. Since;
+\begin{itemize}
+    \item n! = $1\times2\times...\times n \leq n\times n \times...\times n = n^n$\\
+    if we take C =1 and k = 1,\\
+    $|n!| \leq C|n^n|$ for $n > k$, then n! is $O(n^n)$
+    \item If we can show  $n^n$ is $O(n!)$ then we are done. \\
+    by Stirling's Approximation for n!, n! $\approx n^n.e^{-n}.\sqrt{2\pi n}$ \\
+    Suppose there are constants C and k for which $n^n \leq C.n^n.e^{-n} \approx C.n!$  whenever $n > k $ \\
+    by dividing both sides with $n^n$ \\
+    1 $\leq \frac{C.\sqrt{2\pi n}}{e^n} \implies e^n \leq C.\sqrt{2\pi n} $ must hold for all $n > k$. \\ So there is a contradiction. Therefore, $n^n$ is not $O(n!)$ \\
+    Hence, n! is not $\Theta(n^n)$
+\end{itemize}
+\paragraph{b.}
+$(n+a)^b$ is $\Theta(n^b)$. Since;
+\begin{itemize}
+    \item $\sum_{k=0}^{b} \binom{b}{k} a^kn^{b-k} = n^b + \sum_{k=1}^{b} \binom{b}{k} a^kn^{b-k} $
+    \item $\sum_{k=0}^{b} \binom{b}{k} a^kn^{b-k} \leq c_1n^b$\\
+    $\sum_{k=0}^{b} \binom{b}{k} a^kn^{b-k} \leq \sum_{k=0}^{b} \binom{b}{k} a^kn^{b}$ \\
+    $n^b \sum_{k=0}^{b} \binom{b}{k} ka^k \leq c_1n^b$ \\
+    For any $c_1 > \sum_{k=0}^{b} \binom{b}{k} a^k , n_0 > 1$ and $a,b > 0$ this holds.\\
+    So, $(n+a)^b$ is $O(n^b)$
+    \item $n^b + \sum_{k=1}^{b} \binom{b}{k} a^kn^{b-k}$ is positive (assume $a \geq 0$). \\
+    For any $c_2 \geq 1, n_0 >$ the statement which is above holds. \\
+    So, $(n+a)^b$ is $\Omega(n^b)$
+    
+\end{itemize}
+
+\section*{Answer 5}
+\paragraph{a.}
+\begin{itemize}
+    \item Let $x = k.y + r$ for some k,r $\in \mathbb{Z}$ \\
+So, $2^x -1 = 2^{ky + r} -1 = 2^r.2^{ky} -1 $ \\ 
+Let 'A' be a statement such that $2^r.2^{ky} -1 \equiv$ A (mod $2^y -1) $ \\
+Since addition of integers to both sides does not change the result of modulus, we will add 1 to each sides.
+So, $2^r.2^{ky} \equiv$ A + 1 (mod $2^y -1)$ \\
+and, since $2^{ky} \equiv$ 1 (mod $2^y -1)$, \\
+$2^r.2^{ky} \equiv 2^r.1 \equiv 2^r \equiv$ A + 1 (mod $2^y -1)$ \\
+add -1 to both sides, $2^r-1 \equiv$ A (mod $2^y -1)$ \\
+Since $x = k.y + r$,r = x mod y \\
+Hence, A = $2^{x mod y} - 1$
+\end{itemize}
+\paragraph{b.}
+\begin{itemize}
+    \item Let k = gcd(x,y), then $\exists s,t$ such that k = x.s + t.y for s,t are Bezout coefficients. \\
+    Now, if d = gcd($2^x - 1,2^y -1$) then $2^x \equiv 1$ (mod d) and $2^y \equiv 1$ (mod d) \\
+    So, $2^k = 2^{x.s + t.y} = (2^x)^s.(2^y)^t \equiv 1$ (mod d) \\
+    Therefore, d$| 2^k-1$ \\
+    On the other hand, if $k|x$ then $2^k -1 | 2^x -1 $ so $2^k -1$ is a common factor.
+\end{itemize}
+\end{document}

@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage[hmargin=3cm,vmargin=6.0cm]{geometry}
+%\topmargin=0cm
+\topmargin=-2cm
+\addtolength{\textheight}{6.5cm}
+\addtolength{\textwidth}{2.0cm}
+%\setlength{\leftmargin}{-5cm}
+\setlength{\oddsidemargin}{0.0cm}
+\setlength{\evensidemargin}{0.0cm}
+
+% symbol commands for the curious
+\newcommand{\setZp}{\mathbb{Z}^+}
+\newcommand{\setR}{\mathbb{R}}
+\newcommand{\calT}{\mathcal{T}}
+
+\begin{document}
+
+\section*{Student Information } 
+%Write your full name and id number between the colon and newline
+%Put one empty space character after colon and before newline
+Full Name : YAHYA SUNGUR \\
+Id Number : 2375723 \\
+.
+% Write your answers below the section tags
+\section*{Answer 1}
+We can choose 1 star from among 10 stars as C(10,1) = $\frac{10!}{(10-1)!\times1!}$ = 10\\
+We can choose 2 habitable planets from among 20 habitable planets as C(20,2) = $\frac{20!}{(20-2)!\times2!}$ = 190\\
+We can choose 8 non-habitable planets from among 80 non-habitable planets as C(80,8) = $\frac{80!}{(80-8)!\times8!}$ = 28987537150 \\
+We need to order these planets that we have selected in the orbit of the star according to their proximity and distance from the star, with the star at the center.\\
+.\\
+CASE 1: Eight non-habitable planets between two habitable planets \\
+"H: Habitable and N: Non-habitable" \\
+If we consider planets as group. For this case we have only one group which is (H,N,N,N,N,N,N,N,N,H) \\
+The groups can be ordered in 1! different ways for this case since there is only one group.\\
+And in the group, we can order H's in 2! and N's in 8! different ways. \\
+So, for this case there are $1!\times2!\times8!$ = 80640 different ways for ordering planets. \\
+.\\
+CASE 2: Seven non-habitable planets between two habitable planets \\
+If we consider planets as groups. For this case we have two groups which are (H,N,N,N,N,N,N,N,H),(N) \\
+The groups can be ordered in 2! different ways for this case since there are two groups.\\
+And in the first group, we can order H's in 2! and N's in 7! different ways. \\
+And in the second group, we can order N's in 1! different way since there is only one N in the group. \\
+So, if we consider the choices of 8 non-habitable planets, they can be arranged in $2!\times1!\times2!\times7!\times \binom{8}{7}\times \binom{1}{1}$ = 161280 different ways for this case.\\
+.\\
+CASE 3: Six non-habitable planets between two habitable planets \\
+If we consider planets as groups. For this case we have three groups which are (H,N,N,N,N,N,N,H),(N),(N) \\
+The groups can be ordered in 3! different ways for this case since there are three groups.\\
+And in the first group, we can order H's in 2! and N's in 6! different ways. \\
+And in the second and third groups, we can order N's in 1! different way since there is only one N in the groups. \\
+So, if we consider the choices of 8 non-habitable planets, they can be arranged in $3!\times1!\times 1!\times 2!\times6!\times \binom{8}{6}\times \binom{2}{2}$ = 241920 different ways for this case.\\
+.\\
+Hence by the sum rule, there are 10+190+28987537150 = 28987537350 different ways for choosing star and planets, and there are 80640+161280+241920 = 483840 different ways for cases. And by product rule, there are 28987537350 $\times$ 483840 = 14,025,330,071,424,000 ways for forming a galaxy.
+\section*{Answer 2}
+The associated linear homogeneous equation is:
+$$
+a_n - 2a_{n-1} - 152a_{n-2} + 362a_{n-3} = 0
+$$
+and its characteristic equation is:
+$$
+\lambda^3-2\lambda^2-15\lambda+36=0
+\implies (\lambda-3)^3\times(\lambda+4) = 0
+\implies \lambda_1 = 3\ \ (multiplicity\ \ 2),\ \lambda_2 =-4 
+$$
+So, 
+$$
+a_n^{(h)} = (An+B).(3)^n + C.(-4)^n
+$$
+Particular solution:\\
+Guess: $a_n^{(p)} = x.2^n + y$ and,
+$$
+(x.2^n + y) -2(x.2^{n-1} + y) -15(x.2^{n-2} + y) + 36(x.2^{n-3} + y) = 2^n
+$$
+$$
+\implies x.2^n + y -x.2^n -2y - \frac{15}{4}x.2^n -15y + \frac{36}{8}x.2^n + 36y = 2^n
+$$
+$$
+\implies \frac{3}{4}x.2^n + 20y = 2^n \implies y=0\ \ and \ \ x=\frac{4}{3}
+$$
+So,
+$$
+a_n^{(p)} = \frac{4}{3}.2^n
+$$
+Hence,
+$$
+a_n = a_n^{(h)} + a_n^{(p)} =  (An+B).(3)^n + C.(-4)^n + \frac{4}{3}.2^n
+$$
+
+
+
+\section*{Answer 3}
+Let's consider for base cases,\\
+For n = 1:\\
+The code may consist of 1,3,5,7,9. So, $a_1 = 5$\\
+For n = 2:\\
+One of the digits must be odd and it can be chosen in $\binom{5}{1}$ ways. Similar procedure valid for even digit. And they can be ordered in 2! ways. So there are $\binom{5}{1} \times \binom{5}{1} \times 2! = 50$ possibilities. Hence $a_2 = 50$\\
+For $a_n$: \\
+CASE 1:\\
+Let's we have valid code with length (n-1). İf we add an even digit to this valid code, we will obtain another valid code with length (n). \\
+For this case, number of valid codes with length (n-1) is $a_{n-1}$ and number of even integer in range [0,9] is 5. So, $|CASE1| = a_{n-1} \times 5 $\\
+CASE 2:\\
+Let's we have invalid code with length (n-1). İf we add an odd digit to this invalid code, we will obtain a valid code with length (n). \\
+For this case, number of invalid codes with length (n-1) is equal to (number of codes - number of valid codes),(i.e. universal set - valid codes). So it is ${10}^{n-1}-a_{n-1}$.And odd integer in range [0,9] is 5. So, $|CASE2| = ({10}^{n-1}-a_{n-1}) \times 5 $\\
+Since CASE1 $\wedge$ CASE2 = $\emptyset$, by sum rule,
+$$
+a_n = |CASE1| + |CASE2| = 5\times{10}^{n-1}
+$$
+\section*{Answer 4}
+$$
+a_k = 3a_{k-1}-3a_{k-2}+a_{k-3}
+$$
+$$
+\sum_{k=3}^{\infty} a_k.x^k = \sum_{k=3}^{\infty} (3a_{k-1}-3a_{k-2}+a_{k-3}).x^k
+$$
+$$
+= \sum_{k=3}^{\infty} 3a_{k-1}.x^k + \sum_{k=3}^{\infty} (-3)a_{k-2}.x^k +\sum_{k=3}^{\infty} a_{k-3}.x^k
+$$
+$$
+= 3x \sum_{k=3}^{\infty} a_{k-1}.x^{k-1} -3x^2\sum_{k=3}^{\infty} a_{k-2}.x^{k-2} + x^3 \sum_{k=3}^{\infty} a_{k-3}.x^{k-3}
+$$
+And since,
+$$
+\sum_{k=3}^{\infty} a_k.x^k = K(x) - a_0 - a_1 - a_2
+$$
+$$
+3x \sum_{k=3}^{\infty} a_{k-1}.x^{k-1} = 3x.(K(x) - a_0 - a_1)
+$$
+$$
+-3x^2 \sum_{k=3}^{\infty} a_{k-2}.x^{k-2} = -3x^2.(K(x) - a_0)
+$$
+$$
+x^3 \sum_{k=3}^{\infty} a_{k-3}.x^{k-3} = x^3.K(x)
+$$
+We have,
+$$
+K(x)-10 = 3x.(K(x) - 4) -3x^2.(K(x) - 1) + x^3.K(x)
+$$
+So,
+$$
+K(x).(-x^3+3x^2-3x+1) = 3x^2-12x+10 \implies K(x) = \frac{3x^2-12x+10}{(1-x)^3}
+$$
+By partial fraction,
+$$
+K(x) = \frac{3}{1-x}+\frac{6}{(1-x)^2} + \frac{1}{(1-x)^3}
+$$
+From the table "Useful Generating Functions" in the book (page 542):\\
+Since,(row 5 in the table)
+$$
+G(x) = \frac{1}{1-x} \implies a_k = 1
+$$
+We have,
+$$
+3\times \frac{1}{1-x} \implies 3\times1 = 3
+$$
+Since, (row 8 in the table)
+$$
+G(x) = \frac{1}{(1-x)^2} \implies a_k = k + 1
+$$
+We have,
+$$
+6\times \frac{1}{(1-x)^2} \implies 6\times(k+1) = 6k+6
+$$
+Since, (row 9 in the table)
+$$
+G(x) = \frac{1}{(1-x)^n} \implies a_k = C(n+k-1,n-1)
+$$
+We have,
+$$
+\frac{1}{(1-x)^3} \implies C(3+k-1,3-1) = C(k+2,2) = \frac{k^2+3k+2}{2}
+$$
+Hence, the sum of all
+$$
+a_k = \frac{k^2+15k+20}{2}
+$$
+
+
+\section*{Answer 5}
+\paragraph{a.}
+.\newline
+R is reflexive:\\
+Suppose (a, b) is an ordered pair in $Z^+ \times Z^+$. [We have to show that (a, b) R (a, b).]\\
+We have a + b = a + b. $\forall\ \ a,b\ \ in\ \ Z^+$.\\ Thus, by definition of R, (a, b) R (a, b). So R is reflexive.\\
+.\newline
+R is symmetric:\\
+Suppose (a, b) and (c, d) are two ordered pairs in $Z^+ \times Z^+$ and (a, b) R (c, d). [We have to show that (c, d) R (a, b).] Since (a, b) R (c, d), a + d = b + c. But this implies that b + c = a + d .\\ 
+So, by definition of R, (c, d) R (a, b). Thus, R is symmetric.\\
+.\newline
+R is transitive:\\
+Suppose (a, b),(c, d), and (e, f) are elements of $Z^+ \times Z^+$, (a, b) R (c, d), and (c, d) R (e, f). [We have to show that (a, b) R (e, f).] Since (a, b) R (c, d), a + d = b + c, which means a - b = c - d, and since (c, d) R (e, f), c + f = d + e, which means c - d = e - f. Thus a - b = e - f, which means a + f = b + e.\\
+So, by definition of R, (a, b) R (e, f). Therefore R is transitive.\\
+Since R is reflexive,symmetric and transitive, R is an equivalence relation.
+\paragraph{b.}
+$$
+[(1,2)] = \{(a,b) \in Z^+ \times Z^+ | (a,b) R (1,2)\}
+$$
+$$
+[(1,2)] = \{(a,b) \in Z^+ \times Z^+ | a+2 = b+1\}
+$$
+$$
+[(1,2)] = \{(a,b) \in Z^+ \times Z^+ | a+1 = b\}
+$$
+$$
+[(1,2)] = \{(a,a+1) | a \in Z^+\}
+$$
+
+\end{document}

@@ -1,0 +1,5 @@
+[[(33, 22), 1, 'notmasked', 'notinfected'], [(26, 28), 2, 'notmasked', 'notinfected'], [(41, 27), 5, 'notmasked', 'infected'], [(35, 32), 5, 'masked', 'notinfected']]
+[[(32, 22), 2, 'notmasked', 'notinfected'], [(27, 27), 5, 'notmasked', 'notinfected'], [(42, 26), 5, 'notmasked', 'infected'], [(36, 31), 5, 'masked', 'notinfected']]
+[[(32, 21), 4, 'notmasked', 'notinfected'], [(28, 26), 5, 'notmasked', 'notinfected'], [(41, 27), 1, 'notmasked', 'infected'], [(37, 32), 7, 'masked', 'notinfected']]
+[[(33, 20), 5, 'notmasked', 'notinfected'], [(29, 25), 5, 'notmasked', 'notinfected'], [(40, 28), 1, 'notmasked', 'infected'], [(37, 31), 4, 'masked', 'notinfected']]
+[[(34, 20), 6, 'notmasked', 'notinfected'], [(28, 25), 2, 'notmasked', 'notinfected'], [(39, 29), 1, 'notmasked', 'infected'], [(36, 32), 1, 'masked', 'notinfected']]

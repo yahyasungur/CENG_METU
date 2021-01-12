@@ -35,27 +35,27 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -65,7 +65,7 @@ def new_move():
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -75,7 +75,7 @@ def new_move():
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -85,30 +85,30 @@ def new_move():
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 #---------------------------------------------------------
@@ -117,17 +117,17 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -137,7 +137,7 @@ def new_move():
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -147,7 +147,7 @@ def new_move():
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -157,40 +157,40 @@ def new_move():
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 #---------------------------------------------------------
@@ -198,7 +198,7 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -208,7 +208,7 @@ def new_move():
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -218,7 +218,7 @@ def new_move():
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -228,50 +228,50 @@ def new_move():
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 #---------------------------------------------------------
@@ -280,7 +280,7 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -290,7 +290,7 @@ def new_move():
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -300,57 +300,57 @@ def new_move():
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -362,7 +362,7 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -372,57 +372,57 @@ def new_move():
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -432,7 +432,7 @@ def new_move():
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -444,57 +444,57 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -504,7 +504,7 @@ def new_move():
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -514,7 +514,7 @@ def new_move():
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -526,47 +526,47 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -576,7 +576,7 @@ def new_move():
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -586,7 +586,7 @@ def new_move():
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -596,10 +596,10 @@ def new_move():
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 #---------------------------------------------------------
@@ -608,37 +608,37 @@ def new_move():
 			if direction[0] == "Forward":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] < N:
 					state[i][1] = 7
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Right":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M:
+				if check != 0 and new_coordinate[1] < M:
 					state[i][1] = 0
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]+1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] <= M and new_coordinate[0] >= 0:
+				if check != 0 and new_coordinate[1] < M and new_coordinate[0] >= 0:
 					state[i][1] = 1
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Backward Right":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[0] >= 0:
@@ -648,7 +648,7 @@ def new_move():
 			elif direction[0] == "Backward":
 				check = 1
 				new_coordinate = (state[i][0][0]-1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] >= 0:
@@ -658,7 +658,7 @@ def new_move():
 			elif direction[0] == "Backward Left":
 				check = 1
 				new_coordinate = (state[i][0][0],state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
 				if check != 0 and new_coordinate[1] >= 0:
@@ -668,20 +668,20 @@ def new_move():
 			elif direction[0] == "Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1]-1)
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[1] >= 0 and new_coordinate[0] < N:
 					state[i][1] = 5
 					state[i][0] = new_coordinate
 
 			elif direction[0] == "Forward Left":
 				check = 1
 				new_coordinate = (state[i][0][0]+1,state[i][0][1])
-				for j in range(i):
+				for j in range(size):
 					if state[j][0] == new_coordinate:
 						check = 0
-				if check != 0 and new_coordinate[0] <= N:
+				if check != 0 and new_coordinate[0] < N:
 					state[i][1] = 6
 					state[i][0] = new_coordinate
 #----------------infection part--------------------------

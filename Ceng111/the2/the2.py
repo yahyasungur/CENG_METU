@@ -686,7 +686,7 @@ def new_move():
 					state[i][0] = new_coordinate
 #----------------infection part--------------------------
 	passed = []
-	for i in range(size-1):
+	for i in range(size):
 		for j in range(i+1,size):
 			if state[i][3] != state[j][3]:
 				distance = math.sqrt(pow((state[i][0][0]-state[j][0][0]),2) + pow((state[i][0][1]-state[j][0][1]),2))
@@ -699,15 +699,15 @@ def new_move():
 						mini = min(1,(K/((distance)**2)))
 					
 					infection = random.choices(["infected","notinfected"],weights=[mini,1-mini])
-					if i in passed or j in passed:
-						continue
+
 					if infection[0] == "infected":
 						if state[i][3] == "notinfected":
-							state[i][3] = "infected"
 							passed.append(i)
-							i += 1
 						elif state[j][3] == "notinfected":
-							state[j][3] = "infected"
 							passed.append(j)
-							j +=1
+	
+	for i in range(size):
+		if i in passed:
+			state[i][3] = "infected"
+	
 	return state

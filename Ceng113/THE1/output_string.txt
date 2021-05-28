@@ -1,0 +1,6 @@
+-> Creating a string with default constructor.
+-> Printing the string.
+[]
+-> Creating a string with default constructor.
+-> Printing the string.
+['d','a','t','a',' ','s','t','r','u','c','t','u','r','e','s']

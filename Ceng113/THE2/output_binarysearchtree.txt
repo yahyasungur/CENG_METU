@@ -1,0 +1,15 @@
+-> Creating a binary search tree node.
+-> Printing the node.
+Node(10)
+-> Creating a binary search tree with default constructor.
+-> Making some insertions to the tree.
+-> Printing the tree.
+BinarySearchTree(
+Node(1), 
+Node(2), 
+Node(3), 
+Node(4), 
+Node(5), 
+Node(6), 
+Node(7)
+)

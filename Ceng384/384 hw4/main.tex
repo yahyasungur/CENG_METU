@@ -1,0 +1,114 @@
+\documentclass[10pt,a4paper, margin=1in]{article}
+\usepackage{fullpage}
+\usepackage{amsfonts, amsmath, pifont}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{float}
+
+\usepackage{tkz-euclide}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=10mm,
+ right=10mm,
+ top=10mm,
+ bottom=10mm,
+ }
+ % Write both of your names here. Fill exxxxxxx with your ceng mail address.
+ \author{
+  Sungur, Yahya\\
+  \texttt{e2375723@ceng.metu.edu.tr}
+  \and
+  Tekmen, Batuhan\\
+  \texttt{e2380921@ceng.metu.edu.tr}
+}
+
+\title{CENG 384 - Signals and Systems for Computer Engineers \\
+Spring 2022 \\
+Homework 4}
+\begin{document}
+\maketitle
+
+
+
+\noindent\rule{19cm}{1.2pt}
+
+\begin{enumerate}
+
+\item %write the solution of q1
+    \begin{enumerate}
+    % Write your solutions in the following items.
+    \item %write the solution of q1a
+        $$ x(t) + \frac{dx(t)}{dt} - \int_{-\infty}^{t} x(\tau) \,d\tau - \int_{-\infty}^{t} y(\tau) \,d\tau  -2y(t) = \frac{dy(t)}{dt}$$
+    \item %write the solution of q1b
+        Let's take the derivative of both sides,
+        $$ \dot{x} + \ddot{x} -x - y - 2\dot{y} = \ddot{y} $$
+        let, 
+        $$ x = e^{jwt} \implies y = H(jw).e^{jwt} $$
+        $$ \dot{x} + \ddot{x} -x = y + 2\dot{y} + \ddot{y} $$
+        $$ \implies jw + (jw)^2 -1 = H + 2Hjw + H(jw)^2 $$
+        $$ \implies jw + (jw)^2 -1 = H + H(1+jw)^2 $$
+        $$ \implies H(jw) = \frac{(jw)^2 + jw -1}{(1+jw)^2} \ \ ,(w = k.w_0) $$
+    \item %write the solution of q1c
+        $$ H(jw) = \frac{(jw)^2 + jw -1}{(1+jw)^2} = 1 - \frac{1}{1+jw} - \frac{1}{(1+jw)^2} $$
+        Inverse fourier table from lecture note 10;
+        $$ H(jw) \longrightarrow \delta(t) - e^{-t}u(t) - te^{-t}u(t) = h(t)  $$
+    \item %write the solution of q1d
+        $$ Y(jw) = H(jw).X(jw) = H(jw)(\frac{1}{1+jw}) = \frac{1}{1+jw} - \frac{1}{(1+jw)^2} - \frac{1}{(1+jw)^3} $$
+        Inverse fourier;
+        $$ Y(jw) \longrightarrow e^{-t}u(t) - te^{-t}u(t) - \frac{t^2}{2}e^{-t}u(t) = y(t) $$
+    \end{enumerate}
+\hline
+\item %write the solution of q2
+    \begin{enumerate}
+    % Write your solutions in the following items.
+    \item %write the solution of q2a
+        $$ \int_{-\infty}^{t} \dot{h}(\tau) \,d\tau = \int_{-\infty}^{t} \delta(\tau+1) \,d\tau  -\int_{-\infty}^{t} \delta(\tau-1) \,d\tau $$
+        $$ h(t) = u(t+1) - u(t-1) $$
+    \item %write the solution of q2b
+        $$ H(jw) = \int_{-\infty}^{\infty} h(t)e^{-jwt} \,dt = \int_{-\infty}^{\infty} u(t+1)e^{-jwt} \,dt  - \int_{-\infty}^{\infty} u(t-1)e^{-jwt} \,dt$$
+        $$ = e^{jwt}.Fourier(u(t)) - e^{-jw}.Fourier(u(t)) $$
+        $$ = \frac{e^{jw}}{jw} - \frac{e^{-jw}}{jw} $$
+    \end{enumerate}
+\newpage
+\item %write the solution of q3  
+    \begin{enumerate}
+    % Write your solutions in the following items.
+    \item %write the solution of q3a
+        $$ h[n] = h_1[n]*h_2[n] \Longleftrightarrow H(e^{jw}) = H_1(e^{jw})H_2(e^{jw}) $$
+        $$ H(e^{jw}) = (\frac{1}{1-\frac{e^{-jw}}{2}})^2 $$
+    \item %write the solution of q3b
+        $$ x[n] = sin(\frac{\pi}{3} (n+ \frac{3\pi}{4})) $$
+        $$ sin(\frac{\pi}{3}n) \Longleftrightarrow \frac{\pi}{j} \sum_{n= -\infty}^{\infty} [\delta(w- \frac{\pi}{3} - 2\pi k) - \delta(w + \frac{\pi}{3} - 2\pi k)] $$
+        $$ x[n] = sin(\frac{\pi}{3}(n + \frac{3\pi}{4})) \Longleftrightarrow \frac{e^{jw\frac{3\pi}{4}}\pi}{j} \sum_{n= -\infty}^{\infty} [\delta(w- \frac{\pi}{3} - 2\pi k) - \delta(w + \frac{\pi}{3} - 2\pi k)]  $$
+    \item %write the solution of q3c
+        $$ Y(e^{jw}) = H(e^{jw})X(e^{jw}) $$
+        $$ = (\frac{1}{1-\frac{e^{-jw}}{2}})^2 \ \ . \frac{e^{jw\frac{3\pi}{4}}\pi}{j} \sum_{n= -\infty}^{\infty} [\delta(w- \frac{\pi}{3} - 2\pi k) - \delta(w + \frac{\pi}{3} - 2\pi k)] $$
+    \end{enumerate}
+\hline
+\item %write the solution of q4
+    \begin{enumerate}
+    % Write your solutions in the following items.
+    \item %write the solution of q4a
+        $$ h[n] = 2\delta[n] + (\frac{1}{2})^n u[n] \Longleftrightarrow 2 + \frac{1}{1- \frac{1}{2} e^{-jw}} = H(jw) $$
+    \item %write the solution of q4b
+        $$ 2 + \frac{2}{2- e^{-jw}} = \frac{6 - 2e^{-jw}}{2- e^{-jw}} = \frac{Y(jw)}{X(jw)} $$
+        $$ 2Y(e^{jw}) - e^{-jw}Y(e^{jw}) = 6X(e^{jw}) - 2e^{-jw}X(e^{jw})$$
+        Take the inverse fourier transform;
+        $$ 2y[n] - y[n-1] = 6x[n] - 2x[n-1] $$
+    \item %write the solution of q4c
+        $$ x[n] = (-1)^n = (e^{j\pi})^n = e^{-jn\pi} $$
+        $$ \implies X(e^{jw}) = 2\pi \sum_{n= -\infty}^{\infty} \delta(w- \pi - 2\pi k)$$
+        $$ Y(e^{jw}) = H(e^{jw})X(e^{jw}) = (2 + \frac{1}{1- \frac{1}{2} e^{-jw}}).2\pi \sum_{n= -\infty}^{\infty} \delta(w- \pi - 2\pi k) $$
+    \end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}
+
